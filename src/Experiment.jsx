@@ -10,8 +10,17 @@ const noopStore = {
   getItem: function(){},
   setItem: function(){}
 };
+let localStorage = null;
+try {
+  if (typeof window !== 'undefined' && 'localStorage' in window && window['localStorage'] !== null) {
+    localStorage = window.localStorage;
+  }
+}
+catch {
+  localStorage = null;
+}
 
-if (typeof window !== 'undefined' && 'localStorage' in window && window['localStorage'] !== null) {
+if (typeof window !== 'undefined' && localStorage) {
   try {
     let key = '__pushtell_react__';
     window.localStorage.setItem(key, key);
