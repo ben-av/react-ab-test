@@ -16,7 +16,7 @@ try {
     localStorage = window.localStorage;
   }
 }
-catch {
+catch(e) {
   localStorage = null;
 }
 
